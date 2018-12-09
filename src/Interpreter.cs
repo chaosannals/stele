@@ -1,4 +1,7 @@
-﻿using Stele.Runtime;
+﻿using System.IO;
+using Stele.Grammar;
+using Stele.Program;
+using Stele.Runtime;
 
 namespace Stele
 {
@@ -17,9 +20,17 @@ namespace Stele
             status = new Status();
         }
 
-        public void Interpret()
+        public object Interpret(StreamReader reader)
         {
+            Lexer lexer = new Lexer(reader);
+            Parser parser = new Parser();
+            Statement statement = parser.Parse(lexer);
+            return statement.Evaluate(status.Global);
+        }
 
+        public object Interpret(FileStream stream)
+        {
+            return Interpret(new StreamReader(stream));
         }
     }
 }

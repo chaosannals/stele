@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Stele.Grammar
 {
+    /// <summary>
+    /// 词素
+    /// </summary>
     public class Lexeme
     {
         public Token Token { get; private set; }

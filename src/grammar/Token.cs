@@ -4,24 +4,27 @@ using System.Text;
 
 namespace Stele.Grammar
 {
+    /// <summary>
+    /// 词素记号
+    /// </summary>
     public enum Token
     {
-        End,
-        EndOfLine,
-        LeftParenthesis,
-        RightParenthesis,
-        LeftCurly,
-        RightCurly,
-        LeftBracket,
-        RightBracket,
+        End,// 结束
+        EndOfLine,// 行尾
+        OpenParenthesis,// (
+        CloseParenthesis,// )
+        OpenBrace,// {
+        CloseBrace,// }
+        OpenBracket,// [
+        CloseBracket,// ]
         Semicolon,// ;
         Colon,// :
         Dot,// .
-        Identifier,
-        Number,
+        Identifier,// 标识符
+        Number,// 数字
         Return,// return
         Nil,// nil
-        Define,// =>
+        Define,// ::
         Assign,// =
         Plus,// +
         Minus,// -

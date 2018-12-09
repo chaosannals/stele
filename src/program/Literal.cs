@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Stele.Grammar
+namespace Stele.Program
 {
     /// <summary>
-    /// 词素异常
+    /// 字面量
     /// </summary>
-    public class LexiconException : InterpretException
+    public class Literal : Exception
     {
+
     }
 }
