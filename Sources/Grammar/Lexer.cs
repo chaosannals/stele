@@ -56,24 +56,24 @@ namespace Stele.Grammar
             // 数字词素。
             if (Char.IsDigit((char)reader.Peek()))
             {
-
+                return pullNumber();
             }
 
             // 标识词素。
             if (Char.IsLetter((char)reader.Peek()))
             {
-
+                return pullIdentifier();
             }
 
             // 符号词素。
-            switch (reader.Peek())
+            switch (reader.Read())
             {
                 case '=':
-                    break;
+                    return new Lexeme(Token.Assign, "=");
                 case '+':
-                    break;
+                    return new Lexeme(Token.Plus, "+");
                 case '-':
-                    break;
+                    return new Lexeme(Token.Minus, "-");
                 case '<':
                     break;
                 case '>':
@@ -100,6 +100,30 @@ namespace Stele.Grammar
                     break;
             }
             throw new LexiconException();
+        }
+
+        private Lexeme pullNumber()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append((char)reader.Read());
+            while (Char.IsDigit((char)reader.Peek()))
+            {
+                builder.Append((char)reader.Read());
+            }
+            string text = builder.ToString();
+            return new Lexeme(Token.Number, text);
+        }
+
+        private Lexeme pullIdentifier()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append((char)reader.Read());
+            while (Char.IsLetterOrDigit((char)reader.Peek()))
+            {
+                builder.Append((char)reader.Read());
+            }
+            string text = builder.ToString();
+            return new Lexeme(Token.Identifier, text);
         }
     }
 }
