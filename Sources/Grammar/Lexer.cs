@@ -114,6 +114,10 @@ namespace Stele.Grammar
             return new Lexeme(Token.Number, text);
         }
 
+        /// <summary>
+        /// 获取标识符。
+        /// </summary>
+        /// <returns></returns>
         private Lexeme pullIdentifier()
         {
             StringBuilder builder = new StringBuilder();
